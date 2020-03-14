@@ -22,14 +22,11 @@ public final class SilkySpawners extends JavaPlugin {
     public void onEnable() {
         super.onEnable();
 
-        getLogger().info("onEnable has been invoked!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         getServer().getPluginManager().registerEvents(new SpawnerBreakListener(this), this);
     }
 
     @Override
     public void onDisable() {
         super.onDisable();
-
-        getLogger().info("onDisable HAS BEEN INVOOOOOOOOOOOOOOOOOOOOOOOKED!!!!!!!!!!! XDDDDDDDDDDDD");
     }
 }
