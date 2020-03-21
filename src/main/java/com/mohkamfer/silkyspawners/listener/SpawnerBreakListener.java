@@ -1,14 +1,11 @@
 package com.mohkamfer.silkyspawners.listener;
 
 import com.mohkamfer.silkyspawners.SilkySpawners;
-import net.minecraft.server.v1_14_R1.NBTTagCompound;
-import net.minecraft.server.v1_14_R1.NBTTagList;
-import org.apache.commons.lang.StringUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.CreatureSpawner;
-import org.bukkit.craftbukkit.v1_14_R1.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -48,6 +45,13 @@ public class SpawnerBreakListener implements Listener {
         }
 
         Player player = event.getPlayer();
+
+        if (!player.hasPermission("silkspawners.silkdrop")) {
+            event.setCancelled(true);
+            instance.getLogger().info("No permission");
+            return;
+        }
+
         ItemStack itemInHand = player.getItemInHand();
 
         if (!isSilkPickaxe(itemInHand)) return;
@@ -65,7 +69,7 @@ public class SpawnerBreakListener implements Listener {
             CreatureSpawner creatureSpawner = (CreatureSpawner) blockState;
             creatureSpawner.setSpawnedType(((CreatureSpawner) state).getSpawnedType());
             blockStateMeta.setBlockState(creatureSpawner);
-            itemMeta.setDisplayName(getSpawnerNameFromEntity(entity));
+            itemMeta.setDisplayName(ChatColor.RESET +  getSpawnerNameFromEntity(entity));
             drop.setItemMeta(itemMeta);
             player.getWorld().dropItemNaturally(block.getLocation(), drop);
         }

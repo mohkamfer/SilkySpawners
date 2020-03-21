@@ -6,7 +6,7 @@
 
     <groupId>com.mohkamfer.silkyspawners</groupId>
     <artifactId>SilkySpawners</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <build>
         <directory>C:\\Users\\mohkamfer\\Documents\\Minecraft Server\\server_data\\plugins</directory>
