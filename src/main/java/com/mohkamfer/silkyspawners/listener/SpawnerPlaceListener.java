@@ -46,7 +46,6 @@ public class SpawnerPlaceListener implements Listener {
         }
 
         if (block.getType() == Material.SPAWNER) {
-            instance.getLogger().info("Spawner placed!");
             Chunk chunk = block.getChunk();
             BlockState[] tileEntities = chunk.getTileEntities();
             int spawnerCount = 0;
@@ -54,7 +53,6 @@ public class SpawnerPlaceListener implements Listener {
                 if (tileEntity.getType() == Material.SPAWNER) spawnerCount++;
             }
 
-            instance.getLogger().info("There are " + spawnerCount + " spawners in this chunk");
             int maxSpawnerCount;
             FileConfiguration config = instance.getConfig();
             if (config.contains(SILKY_SPAWNERS_MAX_SPAWNERS)) {
@@ -65,7 +63,6 @@ public class SpawnerPlaceListener implements Listener {
                 instance.saveConfig();
             }
 
-            instance.getLogger().info(maxSpawnerCount + "");
             if (spawnerCount > maxSpawnerCount - 1) {
                 event.setCancelled(true);
                 player.sendMessage(ChatColor.RED + "" +

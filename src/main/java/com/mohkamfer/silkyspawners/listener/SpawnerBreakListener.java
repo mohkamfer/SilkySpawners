@@ -48,7 +48,6 @@ public class SpawnerBreakListener implements Listener {
 
         if (!player.hasPermission("silkspawners.silkdrop")) {
             event.setCancelled(true);
-            instance.getLogger().info("No permission");
             return;
         }
 
@@ -61,7 +60,6 @@ public class SpawnerBreakListener implements Listener {
         BlockState state = block.getState();
         if (state instanceof CreatureSpawner) {
             String entity = ((CreatureSpawner) state).getSpawnedType().getKey() + "";
-            instance.getLogger().info(entity);
             ItemStack drop = new ItemStack(state.getType());
             ItemMeta itemMeta = drop.getItemMeta();
             BlockStateMeta blockStateMeta = ((BlockStateMeta) itemMeta);
