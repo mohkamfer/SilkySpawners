@@ -9,7 +9,6 @@
     <version>1.0</version>
 
     <build>
-        <directory>C:\\Users\\mohkamfer\\Documents\\Minecraft Server\\server_data\\plugins</directory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
